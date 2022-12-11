@@ -7,7 +7,7 @@
 #include <GLFW/glfw3.h>
 
 /*
-* @brief :  »­´°Ìå
+* @brief :  ç”»çª—ä½“
 * @access:  public 
 * @return:  void
 * @data  :  2022/12/11
@@ -15,7 +15,7 @@
 void drawWindow();
 
 /*
-* @brief :  »­Èý½ÇÐÎ
+* @brief :  ç”»ä¸‰è§’å½¢
 * @access:  public 
 * @return:  void
 * @data  :  2022/12/11
