@@ -10,7 +10,7 @@ Windows下练习[OpenGL](https://learnopengl-cn.github.io/intro/)
 
 #### 项目结构
 ```
-├─cmake         配置库路径
+├─cmake         配置查找GLFW静态库路径
 ├─glad          glad静态库
 │  ├─include
 │  └─source
@@ -18,7 +18,7 @@ Windows下练习[OpenGL](https://learnopengl-cn.github.io/intro/)
 │  ├─include
 │  ├─source
 │  └─main.cpp
-└─resource      GLFW静态库
+└─resource      GLFW静态资源库, 外部编译成功后放入即可
     ├─include
     └─library
 ```
