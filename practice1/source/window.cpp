@@ -1,7 +1,4 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <iostream>
+#include "practice1.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -18,7 +15,7 @@ void processInput(GLFWwindow* window);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-int main(int argc, char* argv[])
+void drawWindow()
 {
     // glfw初始化设置
     glfwInit();
@@ -37,7 +34,7 @@ int main(int argc, char* argv[])
     {
         std::cout << "Falied to create GLFW window" << std::endl;
         glfwTerminate();
-        return -1;
+        return;
     }
     // 通知GLFW将当前窗口设置为主窗口
     glfwMakeContextCurrent(window);
@@ -52,7 +49,7 @@ int main(int argc, char* argv[])
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
+        return;
     }
 
     // 渲染循环(render loop), 判断当前窗体是否退出
@@ -77,8 +74,6 @@ int main(int argc, char* argv[])
 
     // 释放GLFW申请的资源
     glfwTerminate();
-
-    return 0;
 }
 
 // 窗口大小发生变化时, OpenGL执行这个回调函数
