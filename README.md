@@ -8,7 +8,7 @@ Windows下练习[OpenGL](https://learnopengl-cn.github.io/intro/)
 
 * practice1为[入门练习](https://learnopengl-cn.github.io/01%20Getting%20started/01%20OpenGL/)
 
-##项目结构
+#### 项目结构
 ```
 ├─cmake         配置库路径
 ├─glad          glad静态库
