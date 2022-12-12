@@ -1,6 +1,6 @@
 #include "practice1.h"
 
-#define DRAW        1
+#define DRAW        3
 
 int main(int argc, char* argv[])
 {
@@ -14,6 +14,16 @@ int main(int argc, char* argv[])
     case 1:
     {
         drawTriangle();                         // »­Èý½ÇÐÎ
+        break;
+    }
+    case 2:
+    {
+        drawDynamicTriangle();
+        break;
+    }
+    case 3:
+    {
+        drawTexture();
         break;
     }
     default:

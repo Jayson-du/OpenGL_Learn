@@ -1,30 +1,15 @@
-#include "practice1.h"
+#include "shader_s.h"
 
-/*
- * @brief : 缓冲刷新回调函数
- * @access: public static 
- * @param : GLFWwindow * window
- * @param : int width
- * @param : int height
- * @return: void
- * @data  : 2022/12/12
-*/
+#include <direct.h>
+
 static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-/*
- * @brief : 处理输入
- * @access: public
- * @param : GLFWwindow * window
- * @return: void
- * @data  : 2022/12/10
-*/
 static void processInput(GLFWwindow* window);
 
-// setting
-const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_WIDTH  = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-void drawWindow()
+void drawDynamicTriangle()
 {
     // glfw初始化设置
     glfwInit();
@@ -61,10 +46,47 @@ void drawWindow()
         return;
     }
 
-    // 渲染循环(render loop), 判断当前窗体是否退出
+    std::string vertexShader = std::string(_getcwd(NULL, 0)).append("\\source\\vertexShader.vs");
+    std::string fragmentShader = std::string(_getcwd(NULL, 0)).append("\\source\\fragmentShader.fs");
+
+    // Shader对象读取定点着色器程序与片段着色器程序
+    Shader ourShader(vertexShader.c_str(), fragmentShader.c_str());
+
+    // 数据
+    float vertices[] = {
+        // positions         // colors
+         0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // bottom left
+         0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // top
+    };
+
+    unsigned int VBO, VAO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+
+    // 1、创建VAO;
+    glBindVertexArray(VAO);
+
+    // 2、创建VBO;
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+    // 3、用VBO绑定一块缓冲区, 并将vertices中的数据写入缓冲区中
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // 4、设置GPU解析位置数据
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    // 使能位置解析
+    glEnableVertexAttribArray(0);
+
+    // 5、设置GPU解析颜色数据
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    // 使能颜色解析
+    glEnableVertexAttribArray(1);
+
+    // 渲染
     while (!glfwWindowShouldClose(window))
     {
-        // 处理输入
         processInput(window);
 
         // 渲染
@@ -73,26 +95,26 @@ void drawWindow()
         // 清空屏幕的颜色缓冲，它接受一个缓冲位(Buffer Bit)来指定要清空的缓冲，可能的缓冲位有GL_COLOR_BUFFER_BIT，GL_DEPTH_BUFFER_BIT和GL_STENCIL_BUFFER_BIT
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // glfw: swap buffers and pool IO events (key pressed/released, mouse moved etc)
-        // 会交换颜色缓冲（它是一个储存着GLFW窗口每一个像素颜色值的大缓冲），它在这一迭代中被用来绘制，并且将会作为输出显示在屏幕上
-        glfwSwapBuffers(window);
 
-        // 函数检查有没有触发什么事件（比如键盘输入、鼠标移动等）、更新窗口状态，并调用对应的回调函数（可以通过回调方法手动设置）
+        // 激活Shader程序对象
+        ourShader.use();
+        glBindVertexArray(VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
-    // 释放GLFW申请的资源
+    // optional: de-allocate all resources once they've outlived their purpose:
+    // ------------------------------------------------------------------------
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+
+    // glfw: terminate, clearing all previously allocated GLFW resources.
+    // ------------------------------------------------------------------
     glfwTerminate();
 }
 
-// 窗口大小发生变化时, OpenGL执行这个回调函数
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-    // 重新匹配视口大小
-    glViewport(0, 0, width, height);
-}
-
-// 比较输入字符, 如果是"esc"则窗体退出
 void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -100,3 +122,9 @@ void processInput(GLFWwindow* window)
         glfwSetWindowShouldClose(window, true);
     }
 }
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+
