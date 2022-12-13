@@ -1,36 +1,41 @@
 #include "practice1.h"
 
-#define DRAW        3
+#define DRAW        4
 
-int main(int argc, char* argv[])
-{
-    switch (DRAW)
-    {
-    case 0:
-    {
-        drawWindow();                           // 画窗体
-        break;
-    }
-    case 1:
-    {
-        drawTriangle();                         // 画三角形
-        break;
-    }
-    case 2:
-    {
-        drawDynamicTriangle();
-        break;
-    }
-    case 3:
-    {
-        drawTexture();
-        break;
-    }
-    default:
-    {
-        break;
-    }
-    }
-    
-    return 0;
-}
+//int main(int argc, char* argv[])
+//{
+//    switch (DRAW)
+//    {
+//    case 0:
+//    {
+//        drawWindow();                           // 画窗体
+//        break;
+//    }
+//    case 1:
+//    {
+//        drawTriangle();                         // 画三角形
+//        break;
+//    }
+//    case 2:
+//    {
+//        drawDynamicTriangle();
+//        break;
+//    }
+//    case 3:
+//    {
+//        drawTexture();
+//        break;
+//    }
+//    case 4:
+//    {
+//        drawCoordinate();
+//        break;
+//    }
+//    default:
+//    {
+//        break;
+//    }
+//    }
+//    
+//    return 0;
+//}

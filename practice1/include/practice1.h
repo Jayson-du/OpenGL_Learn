@@ -6,6 +6,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <glad/glad.h>
+#include <glm/glm.hpp>
+
 # define LOGBUFFER      512
 
 #include <string>
@@ -82,5 +85,13 @@ void drawDynamicTriangle();
  * @data  : 2022/12/12
 */
 void drawTexture();
+
+/*
+* @brief :  绘制坐标变换
+* @access:  public 
+* @return:  void
+* @data  :  2022/12/13
+*/
+void drawCoordinate();
 
 #endif
