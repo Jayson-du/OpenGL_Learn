@@ -1,8 +1,10 @@
 @echo off
 echo cmake build vs2022 x64
+
 set builderDir=%~dp0
 
-rm %builderDir%/CMakeCache.txt
+if exist %builderDir%\CMakeCache.txt rm %builderDir%\CMakeCache.txt
+
 :: -S: 指定源码所在路径
 :: -B: 指定生成项目所在路径
 :: -G: 使用哪个SDK生成器

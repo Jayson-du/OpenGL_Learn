@@ -113,10 +113,24 @@ void drawTexture()
     unsigned int texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
+
+    /*
+     * @brief : 设置纹理的环绕方式
+     * @param : 纹理目标
+     * @param : 指定设置的选项与应用的纹理轴
+     * @param : 纹理环绕方式
+     */
     // 设置S(x)轴纹理, repeat模式
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     // 设置T(y)轴纹理, repeat模式
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    /*
+     * @brief : 设置纹理的过滤方式, 当进行放大(Magnify)和缩小(Minify)操作的时候设置纹理过滤的选项
+     * @param : 纹理目标
+     * @param : 方式
+     * @param : 纹理过滤方式(4种)
+     */
     // 设置纹理过滤器参数
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
