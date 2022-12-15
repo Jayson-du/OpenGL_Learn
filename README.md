@@ -22,3 +22,10 @@ Windows下练习[OpenGL](https://learnopengl-cn.github.io/intro/)
     ├─include
     └─library
 ```
+
+#### 操作步骤
+```
+1、下载CMake, 并将CMake路径配置如系统的环境变量
+2、双击build.cmd，即可构建Visual Studio解决方案
+3、打开即可编译通过
+```
