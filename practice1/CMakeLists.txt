@@ -18,12 +18,21 @@ file(GLOB_RECURSE sourceFile
      )
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${sourceFile})
 
-# 查找指定目录下的所有shader文件
-file(GLOB_RECURSE shaderFile
+# 查找指定目录下的所有vertexShader文件
+file(GLOB_RECURSE vertexFile
      "${CMAKE_CURRENT_SOURCE_DIR}/source/transform/*.vs"
-     "${CMAKE_CURRENT_SOURCE_DIR}/source/transform/*.fs"
+     "${CMAKE_CURRENT_SOURCE_DIR}/source/coordinate/*.vs"
+     "${CMAKE_CURRENT_SOURCE_DIR}/source/camera/*.vs"
      )
-source_group(shaderFile FILES ${shaderFile})
+source_group(shaderFile/vertexFile FILES ${vertexFile})
+
+# 查找指定目录下的所有fragmentShader文件
+file(GLOB_RECURSE fragmentFile
+     "${CMAKE_CURRENT_SOURCE_DIR}/source/transform/*.fs"
+     "${CMAKE_CURRENT_SOURCE_DIR}/source/coordinate/*.fs"
+     "${CMAKE_CURRENT_SOURCE_DIR}/source/camera/*.fs"
+     )
+source_group(shaderFile/fragmentFile FILES ${fragmentFile})
 
 # main.cpp不填加筛选器
 source_group("" FILES main.cpp)
@@ -36,6 +45,7 @@ link_libraries(glad)
 add_executable(practice1
                ${headerfile}
                ${sourceFile}
-               ${shaderFile}
+               ${vertexFile}
+               ${fragmentFile}
                main.cpp
               )

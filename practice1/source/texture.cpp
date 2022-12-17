@@ -2,8 +2,6 @@
 #include "stb_image.h"
 #include "shader_s.h"
 
-#include "direct.h"
-
 /*
  * @brief : 缓冲刷新回调函数
  * @access: public static

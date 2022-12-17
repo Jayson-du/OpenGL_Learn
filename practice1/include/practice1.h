@@ -2,6 +2,7 @@
 #define PRACTICE1_H
 
 #include <iostream>
+#include <direct.h>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -9,11 +10,10 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-# define LOGBUFFER      512
-
 #include <string>
 #include <initializer_list>
 
+#define LOGBUFFER      512
 
 #define NONE                        "\033[m"
 #define RED                         "\033[0;32;31m"
@@ -93,5 +93,13 @@ void drawTexture();
 * @data  :  2022/12/13
 */
 void drawCoordinate();
+
+/*
+* @brief :  摄像机
+* @access:  public 
+* @return:  void
+* @data  :  2022/12/15
+*/
+void drawCamera();
 
 #endif

@@ -1,6 +1,6 @@
 #include "practice1.h"
 
-#define DRAW        4
+#define DRAW        5
 
 int main(int argc, char* argv[])
 {
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
         drawTriangle();                         // »­Èý½ÇÐÎ
         break;
     }
-    case 2:
+    case 2:                                     
     {
         drawDynamicTriangle();
         break;
@@ -31,6 +31,11 @@ int main(int argc, char* argv[])
         drawCoordinate();
         break;
     }
+    case 5:
+    {
+        drawCamera();
+        break;
+    }
     default:
     {
         break;
@@ -39,3 +44,5 @@ int main(int argc, char* argv[])
     
     return 0;
 }
+
+
