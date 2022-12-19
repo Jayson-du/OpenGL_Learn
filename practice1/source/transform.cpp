@@ -1,3 +1,5 @@
+
+#define DIRECT
 #include "shader_s.h"
 #include "stb_image.h"
 

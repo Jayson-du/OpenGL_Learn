@@ -1,5 +1,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+
+#define DIRECT
 #include "shader_s.h"
 
 /*

@@ -2,6 +2,9 @@
 #include "glm/gtc/type_ptr.hpp"
 
 #include "stb_image.h"
+
+#define DIRECT
+
 #include "shader_s.h"
 
 /*

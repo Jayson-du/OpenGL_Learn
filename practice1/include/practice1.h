@@ -2,7 +2,10 @@
 #define PRACTICE1_H
 
 #include <iostream>
+
+#ifdef DIRECT
 #include <direct.h>
+#endif
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

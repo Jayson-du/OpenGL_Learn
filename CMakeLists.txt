@@ -56,6 +56,10 @@ add_subdirectory(glad)
 # practice1项目
 add_subdirectory(practice1)
 
+# practice2项目
+add_subdirectory(practice2)
+
+
+set (STARTUP "practice2")
 # Windows下是指当前启动项目
-set (STARTUP "practice1")
 set_property (DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${STARTUP})
