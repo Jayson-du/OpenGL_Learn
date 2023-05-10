@@ -1,16 +1,27 @@
 @echo off
 echo cmake build vs2022 x64
 
+if not exist build (
+   mkdir build
+) 
+
+cd ./build
+
+if exist CMakeCache.txt (
+    echo "É¾³ı´æÔÚCMakeCache.txt"
+    rm CMakeCache.txt
+) 
+
 set builderDir=%~dp0
 
 if exist %builderDir%\CMakeCache.txt rm %builderDir%\CMakeCache.txt
 
-:: -S: æŒ‡å®šæºç æ‰€åœ¨è·¯å¾„
-:: -B: æŒ‡å®šç”Ÿæˆé¡¹ç›®æ‰€åœ¨è·¯å¾„
-:: -G: ä½¿ç”¨å“ªä¸ªSDKç”Ÿæˆå™¨
-:: -A: æŒ‡å®šå¹³å°
-:: -D: ä¼ é€’å‚æ•°ç»™CMakeLists.txt
-:: CMAKE_CONFIGURATION_TYPES: æŒ‡å®šRelease or Debug
-cmake -S %builderDir% -B %builderDir% -G "Visual Studio 16 2019"  -A x64 -DPLATFORM=Windows -DCMAKE_CONFIGURATION_TYPES=Debug
+:: -S: Ö¸¶¨Ô´ÂëËùÔÚÂ·¾¶
+:: -B: Ö¸¶¨Éú³ÉÏîÄ¿ËùÔÚÂ·¾¶
+:: -G: Ê¹ÓÃÄÄ¸öSDKÉú³ÉÆ÷
+:: -A: Ö¸¶¨Æ½Ì¨
+:: -D: ´«µİ²ÎÊı¸øCMakeLists.txt
+:: CMAKE_CONFIGURATION_TYPES: Ö¸¶¨Release or Debug
+cmake -S %builderDir% -B %builderDir%\build -G "Visual Studio 16 2019"  -A x64 -DPLATFORM=Windows -DCMAKE_CONFIGURATION_TYPES=Debug
 
 pause
